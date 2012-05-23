@@ -2,39 +2,60 @@
 # PawnStars
 
 class PawnStars extends PHPUnit_Framework_TestCase{
-	public function test(){
 
-		$v = convert(array("season"=>0,"episode"=>1));
-		$this->assertEquals(2, $v["season"]);
-		$this->assertEquals(0, $v["episode"]);
+	public function testSpecials(){
+		$tvdb = def(0,1);
+		$nzb = def(2,0);
+		$this->assertEquals($nzb, convert($tvdb));
+	}
 
-		$v = convert(array("season"=>2,"episode"=>8));
-		$this->assertEquals(2, $v["season"]);
-		$this->assertEquals(8, $v["episode"]);
+	public function testS1(){
+		$tvdb = def(1,1);
+		$nzb = def(1,1);
+		$this->assertEquals($nzb, convert($tvdb));
 
-		$v = convert(array("season"=>2,"episode"=>32));
-		$this->assertEquals(2, $v["season"]);
-		$this->assertEquals(31, $v["episode"]);
+		$tvdb = def(1,14);
+		$nzb = def(1,14);
+		$this->assertEquals($nzb, convert($tvdb));
+	}
+	public function testS2(){
 
-		$v = convert(array("season"=>2,"episode"=>99));
-		$this->assertEquals(4, $v["season"]);
-		$this->assertEquals(40, $v["episode"]);
+		$tvdb = def(2,0);
+		$nzb = def(2,1);
+		$this->assertEquals($nzb, convert($tvdb));
 
-		$v = convert(array("season"=>2,"episode"=>111));
-		$this->assertEquals(4, $v["season"]);
-		$this->assertEquals(52, $v["episode"]);
+		// Licence to Pawn
+		$tvdb = def(2,31);
+		$nzb = def(2,32);
+		$this->assertEquals($nzb, convert($tvdb));
+		
+	}
+	public function testS3(){
+		$tvdb = def(2,32);
+		$nzb = def(3,1);
+		$this->assertEquals($nzb, convert($tvdb));
 
-		$v = convert(array("season"=>3,"episode"=>1));
-		$this->assertEquals(4, $v["season"]);
-		$this->assertEquals(54, $v["episode"]);
+		
+		$tvdb = def(2,98);
+		$nzb = def(3,67);
+		$this->assertEquals($nzb, convert($tvdb));
+	}
+	public function testS4(){
+		$tvdb = def(2,99);
+		$nzb = def(4,40);
+		$this->assertEquals($nzb, convert($tvdb));
 
-		$v = convert(array("season"=>3,"episode"=>2));
-		$this->assertEquals(4, $v["season"]);
-		$this->assertEquals(53, $v["episode"]);
+		$tvdb = def(2,111);
+		$nzb = def(4,52);
+		$this->assertEquals($nzb, convert($tvdb));
 
-		$v = convert(array("season"=>3,"episode"=>38));
-		$this->assertEquals(4, $v["season"]);
-		$this->assertEquals(90, $v["episode"]);
+		$tvdb = def(3,1);
+		$nzb = def(4,54);
+		$this->assertEquals($nzb, convert($tvdb));
+
+		$tvdb = def(3,38);
+		$nzb = def(4,90);
+		$this->assertEquals($nzb, convert($tvdb));
 	}
 }
 ?>

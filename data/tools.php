@@ -1,4 +1,8 @@
-<?php 
+<?php
+function def($s,$e){
+	return array("season"=>$s,"episode"=>$e);
+}
+
 function absolute($e,$h){
         $a = $e["episode"]; 
         $e["season"]--;
@@ -19,5 +23,4 @@ function episode($a,$h){
         $eps["episode"] += $a;
         return $eps;
 }
-
 ?>
